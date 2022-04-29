@@ -1,8 +1,6 @@
 # Manage NTP
 # Class:: chris_ntp_params (
 #
-#
-type ServiceState = Enum['running', 'stopped']
 
 class pbg_ntp (
   Boolean $start_at_boot,
