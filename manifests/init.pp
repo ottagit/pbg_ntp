@@ -2,10 +2,12 @@
 # Class:: chris_ntp_params (
 #
 #
+type ServiceState = Enum['running', 'stopped']
+
 class pbg_ntp (
   Boolean $start_at_boot,
   String[1] $version = 'installed',
-  Enum['running', 'stopped'] $service_state =  'running',
+  ServiceState $state =  'running',
 ) {
   ensure_packages(['ntp'],
     {
@@ -15,7 +17,7 @@ class pbg_ntp (
 
   service {
     "ntp":
-      ensure   => $service_state,
+      ensure   => $state,
       enable   => $start_at_boot,
   }
 }
